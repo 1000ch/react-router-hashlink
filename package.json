@@ -1,0 +1,49 @@
+{
+  "name": "react-router-hashlink",
+  "version": "0.0.0",
+  "description": "react-router-dom/Link wrapper to handle hash value",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && NODE_ENV=development babel src --out-dir lib",
+    "test": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000ch/react-router-hashlink.git"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "link",
+    "hash"
+  ],
+  "author": "1000ch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/react-router-hashlink/issues"
+  },
+  "homepage": "https://github.com/1000ch/react-router-hashlink#readme",
+  "dependencies": {
+    "whatwg-url": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-fresh": "^1.3.1",
+    "eslint-config-fresh-react": "^1.2.0",
+    "eslint-config-xo-react": "^0.12.0",
+    "eslint-config-xo-space": "^0.16.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-router-dom": "^4.1.1"
+  }
+}
