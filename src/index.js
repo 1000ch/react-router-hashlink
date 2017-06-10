@@ -44,7 +44,7 @@ export class HashLink extends React.Component {
   }
 
   scroll() {
-    const element = document.querySelector(this.hashValue);
+    const element = document.getElementById(this.hashValue);
 
     if (!element) {
       return;
