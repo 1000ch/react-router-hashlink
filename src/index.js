@@ -27,11 +27,11 @@ export class HashLink extends React.Component {
     this.dispose = this.dispose.bind(this);
     this.onClick = this.onClick.bind(this);
 
-    this.hash = '#';
+    this.hashValue = '';
     if (typeof this.props.to === 'string' && this.props.to.indexOf('#') !== -1) {
-      this.hash = `#${this.props.to.split('#')[1]}`;
+      this.hashValue = this.props.to.split('#')[1];
     } else if (typeof this.props.to === 'object') {
-      this.hash = this.props.to.hash;
+      this.hashValue = this.props.to.hash.replace('#', '');
     }
 
     this.observer = null;
@@ -44,7 +44,7 @@ export class HashLink extends React.Component {
   }
 
   scroll() {
-    const element = document.querySelector(this.hash);
+    const element = document.querySelector(this.hashValue);
 
     if (!element) {
       return;
@@ -73,7 +73,7 @@ export class HashLink extends React.Component {
   onClick(e) {
     this.props.onClick(e);
 
-    if (this.hash === '#') {
+    if (this.hashValue.length === 0) {
       return;
     }
 
