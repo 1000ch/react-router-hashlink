@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { URL } from 'whatwg-url';
 
 export class HashLink extends React.Component {
   static propTypes = {
@@ -29,8 +28,8 @@ export class HashLink extends React.Component {
     this.onClick = this.onClick.bind(this);
 
     this.hash = '#';
-    if (typeof this.props.to === 'string') {
-      this.hash = new URL(this.props.to).hash;
+    if (typeof this.props.to === 'string' && this.props.to.indexOf('#') !== -1) {
+      this.hash = `#${this.props.to.split('#')[1]}`;
     } else if (typeof this.props.to === 'object') {
       this.hash = this.props.to.hash;
     }
@@ -42,8 +41,6 @@ export class HashLink extends React.Component {
     this.scrollOptions = {
       behavior : this.props.behavior
     };
-
-    delete this.props.behavior;
   }
 
   scroll() {
