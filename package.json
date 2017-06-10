@@ -4,6 +4,7 @@
   "description": "react-router-dom/Link wrapper to handle hash value",
   "main": "lib/index.js",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "rm -rf lib && NODE_ENV=development babel src --out-dir lib",
     "test": "eslint src"
   },

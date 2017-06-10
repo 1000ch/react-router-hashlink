@@ -32,7 +32,7 @@ import { HashLink } from 'react-router-hashlink';
 | behavior | `String` | [`auto`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) |
 | onClick | `Function` | `() => {}` |
 
-You can config [`ScrollBehavior`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface)  option for [`scrollIntoView()`](https://drafts.csswg.org/cssom-view/#dom-element-scrollintoview) via `behavior` property with [smooth scroll polyfill](http://iamdustan.com/smoothscroll/).
+You can configuire scroll behavior via `behavior` property applied to [`ScrollBehavior`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface)  option of [`scrollIntoView()`](https://drafts.csswg.org/cssom-view/#dom-element-scrollintoview). You probably want to polyfill it with [smooth scroll polyfill](http://iamdustan.com/smoothscroll/).
 
 ## License
 
