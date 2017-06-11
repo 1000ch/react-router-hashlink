@@ -94,6 +94,9 @@ export class HashLink extends React.Component {
   }
 
   render() {
+    const props = { ...this.props };
+    delete props.behavior;
+
     return (
       <Link {...this.props} onClick={this.onClick}>
         {this.props.children}
