@@ -7,6 +7,7 @@ export class HashLink extends React.Component {
     children : PropTypes.node.isRequired,
     onClick  : PropTypes.func,
     behavior : PropTypes.string,
+    delay    : PropTypes.number,
     to       : PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.shape({
@@ -17,7 +18,8 @@ export class HashLink extends React.Component {
 
   static defaultProps = {
     onClick  : () => {},
-    behavior : 'auto'
+    behavior : 'auto',
+    delay    : 0
   };
 
   constructor(props) {
@@ -77,28 +79,31 @@ export class HashLink extends React.Component {
       return;
     }
 
-    this.scroll();
+    setTimeout(() => {
+      this.scroll();
 
-    if (this.isDisposed) {
-      return;
-    }
+      if (this.isDisposed) {
+        return;
+      }
 
-    this.observer = new MutationObserver(this.scroll);
-    this.observer.observe(document, {
-      attributes : true,
-      childList  : true,
-      subtree    : true
-    });
+      this.observer = new MutationObserver(this.scroll);
+      this.observer.observe(document, {
+        attributes : true,
+        childList  : true,
+        subtree    : true
+      });
 
-    this.observeTimerId = setTimeout(this.dispose, 5000);
+      this.observeTimerId = setTimeout(this.dispose, 5000);
+    }, this.props.delay);
   }
 
   render() {
     const props = { ...this.props };
     delete props.behavior;
+    delete props.delay;
 
     return (
-      <Link {...this.props} onClick={this.onClick}>
+      <Link {...props} onClick={this.onClick}>
         {this.props.children}
       </Link>
     );
