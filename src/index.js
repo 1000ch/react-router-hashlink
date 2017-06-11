@@ -52,7 +52,9 @@ export class HashLink extends React.Component {
       return;
     }
 
-    element.scrollIntoView(this.scrollOptions);
+    setTimeout(() => {
+      element.scrollIntoView(this.scrollOptions);
+    }, this.props.delay);
 
     // if scrolled, dispose timer and observer
     this.dispose();
@@ -79,22 +81,20 @@ export class HashLink extends React.Component {
       return;
     }
 
-    setTimeout(() => {
-      this.scroll();
+    this.scroll();
 
-      if (this.isDisposed) {
-        return;
-      }
+    if (this.isDisposed) {
+      return;
+    }
 
-      this.observer = new MutationObserver(this.scroll);
-      this.observer.observe(document, {
-        attributes : true,
-        childList  : true,
-        subtree    : true
-      });
+    this.observer = new MutationObserver(this.scroll);
+    this.observer.observe(document, {
+      attributes : true,
+      childList  : true,
+      subtree    : true
+    });
 
-      this.observeTimerId = setTimeout(this.dispose, 5000);
-    }, this.props.delay);
+    this.observeTimerId = setTimeout(this.dispose, 5000);
   }
 
   render() {
